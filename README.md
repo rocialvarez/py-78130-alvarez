@@ -7,7 +7,7 @@ Repositorio del proyecto final para el curso de Python Flex, comisión 78130.
 
 bash
 git clone [URL](https://github.com/rocialvarez/py-78130-alvarez.git)
-cd <pythonfinal>
+cd pythonfinal
 
 ## Crear Entorno Virtual
 
