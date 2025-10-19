@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from coder.forms import *
-from coder.forms import Estudiante
+from coder.models import Estudiante, Grupo, Album
 
 # Create your views here. nota del profe: lógica de las apps, APIS
 
@@ -35,3 +35,23 @@ def lista_estudiantes(request):
         estudiante = Estudiante.objects.all().order_by("-nro_legajo")
 
     return render(request, "coder/estudiante_list.html", {"estudiantes": estudiante, "query": query})
+
+def crear_grupo(request):
+    if request.method == "POST":
+        form = GrupoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("grupo_form")
+    else:
+        form = GrupoForm()
+    return render(request, "coder/grupo_form.html", {'form': form})
+
+def crear_album(request):
+    if request.method == "POST":
+        form = AlbumForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("album_form")
+    else:
+        form = AlbumForm()
+    return render(request, "coder/album_form.html", {'form': form})

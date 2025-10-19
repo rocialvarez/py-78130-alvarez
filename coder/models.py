@@ -12,3 +12,20 @@ class Estudiante(models.Model):
         return f"Estudiante: {self.nombre} - Nro Legajo: {self.nro_legajo}"
     
     # si quiero editar puedo hacerlo, guardar, y ejecutar python manage.py makemigrations de vuelta
+
+class Grupo(models.Model):
+    nombre = models.CharField(max_length=100)
+    pais_origen = models.CharField(max_length=50)
+    debut = models.DateField()
+
+    def __str__(self):
+        return f"{self.nombre} ({self.pais_origen})"
+
+class Album(models.Model):
+    titulo = models.CharField(max_length=100)
+    grupo = models.ForeignKey(Grupo, on_delete=models.CASCADE)
+    fecha_lanzamiento = models.DateField()
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.titulo} - {self.grupo.nombre}"
