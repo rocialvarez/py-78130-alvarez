@@ -1,0 +1,83 @@
+{% extends "coder/index.html" %} {% block titulo %} Listado de albumes {% endblock %} {% block contenido %}
+<div class="container my-5">
+  <h2 class="mb-4 text-center">Álbumes disponibles</h2>
+
+  <div class="row g-4">
+    <!-- Álbum 1 -->
+    <div class="col-md-4 col-sm-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title text-primary">Dark Blood</h5>
+          <p class="card-text">Enhypen</p>
+          <p class="text-muted">Lanzado en 2023</p>
+          <button class="btn btn-outline-primary btn-sm px-4">Ver más</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Álbum 2 -->
+    <div class="col-md-4 col-sm-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title text-primary">Born Pink</h5>
+          <p class="card-text">BLACKPINK</p>
+          <p class="text-muted">Lanzado en 2022</p>
+          <button class="btn btn-outline-primary btn-sm px-4">Ver más</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Álbum 3 -->
+    <div class="col-md-4 col-sm-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title text-primary">Proof</h5>
+          <p class="card-text">BTS</p>
+          <p class="text-muted">Lanzado en 2022</p>
+          <button class="btn btn-outline-primary btn-sm px-4">Ver más</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Álbum 4 -->
+    <div class="col-md-4 col-sm-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title text-primary">Get Up</h5>
+          <p class="card-text">NewJeans</p>
+          <p class="text-muted">Lanzado en 2023</p>
+          <button class="btn btn-outline-primary btn-sm px-4">Ver más</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Álbum 5 -->
+    <div class="col-md-4 col-sm-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title text-primary">Crazy in Love</h5>
+          <p class="card-text">ITZY</p>
+          <p class="text-muted">Lanzado en 2021</p>
+          <button class="btn btn-outline-primary btn-sm px-4">Ver más</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Álbum 6 -->
+    <div class="col-md-4 col-sm-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title text-primary">Oddinary</h5>
+          <p class="card-text">Stray Kids</p>
+          <p class="text-muted">Lanzado en 2022</p>
+          <button class="btn btn-outline-primary btn-sm px-4">Ver más</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-5">
+    <a href="{% url 'index' %}" class="btn btn-primary px-4">Volver</a>
+  </div>
+</div>
+{% endblock %}
