@@ -1,16 +1,17 @@
 from django import forms
-from coder.models import Estudiante, Grupo, Album
+from coder.models import Cliente, Grupo, Album
 
-class EstudianteForm(forms.ModelForm):
+class ClienteForm(forms.ModelForm):
     class Meta:
-        model = Estudiante
-        fields = ["nombre", "apellido", "email", "nro_legajo", "fecha_de_nacimiento"]
+        model = Cliente
+        fields = ["nombre", "apellido", "email", "telefono", "direccion", "fecha_de_nacimiento"]
         widgets = {
             "fecha_de_nacimiento": forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
             "nombre": forms.TextInput(attrs={'class': 'form-control'}),
             "apellido": forms.TextInput(attrs={'class': 'form-control'}),
             "email": forms.EmailInput(attrs={'class': 'form-control'}),
-            "nro_legajo": forms.NumberInput(attrs={'class': 'form-control'})
+            "telefono": forms.TextInput(attrs={'class': 'form-control'}),
+            "direccion": forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 class GrupoForm(forms.ModelForm):

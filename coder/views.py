@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from coder.forms import *
-from coder.models import Estudiante, Grupo, Album
+from coder.models import Cliente, Grupo, Album
 
 # Create your views here. nota del profe: lógica de las apps, APIS
 
@@ -13,28 +13,23 @@ def test(request):
 def albumes(request):
     return render(request, "coder/albumes.html")
 
-def crear_estudiante(request):
-
-
+def crear_cliente(request):
     if request.method == "POST":
-        form = EstudianteForm(request.POST)
+        form = ClienteForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("estudiante_form")
+            return redirect("cliente_list")
     else:
-        form = EstudianteForm()
+        form = ClienteForm()
+    return render(request, "coder/cliente_form.html", {'form': form})
 
-    return render(request, "coder/estudiante_form.html", {'form': form})
-
-def lista_estudiantes(request):
+def lista_clientes(request):
     query = request.GET.get('q', '')
-    if len(query) > 0:
-        estudiante = Estudiante.objects.filter(
-            nombre__icontaines=query).order_by("-nro_legajo") 
+    if query:
+        clientes = Cliente.objects.filter(nombre__icontains=query).order_by("-id")
     else:
-        estudiante = Estudiante.objects.all().order_by("-nro_legajo")
-
-    return render(request, "coder/estudiante_list.html", {"estudiantes": estudiante, "query": query})
+        clientes = Cliente.objects.all().order_by("-id")
+    return render(request, "coder/cliente_list.html", {"clientes": clientes, "query": query})
 
 def crear_grupo(request):
     if request.method == "POST":
