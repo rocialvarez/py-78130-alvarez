@@ -34,6 +34,11 @@
           <td>{{ cliente.apellido }}</td>
           <td>{{ cliente.email }}</td>
           <td>{{ cliente.fecha_de_nacimiento|date:"d/m/Y" }}</td>
+          <td>
+      <a href="{% url 'cliente_detail' cliente.pk %}" class="btn btn-outline-primary btn-sm">Ver</a>
+      <a href="{% url 'cliente_edit' cliente.pk %}" class="btn btn-outline-warning btn-sm">Editar</a>
+      <a href="{% url 'cliente_delete' cliente.pk %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
+    </td>
         </tr>
         {% empty %}
         <tr>

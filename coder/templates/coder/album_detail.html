@@ -1,0 +1,15 @@
+{% extends "coder/index.html" %}
+{% block titulo %}{{ album.titulo }} - Detalle{% endblock %}
+
+{% block contenido %}
+<div class="container my-5 text-center">
+  <div class="card mx-auto shadow-lg p-4" style="max-width: 500px;">
+    <h2 class="text-primary">{{ album.titulo }}</h2>
+    <p><strong>Grupo:</strong> {{ album.grupo.nombre }}</p>
+    <p><strong>Fecha de lanzamiento:</strong> {{ album.fecha_lanzamiento }}</p>
+    <p><strong>Precio:</strong> ${{ album.precio }}</p>
+  </div>
+
+  <a href="{% url 'albumes' %}" class="btn btn-secondary mt-4">Volver al listado</a>
+</div>
+{% endblock %}

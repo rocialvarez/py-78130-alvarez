@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from coder.forms import *
 from coder.models import Cliente, Grupo, Album
 
@@ -11,7 +11,11 @@ def test(request):
     return render(request, "coder/test.html")
 
 def albumes(request):
-    return render(request, "coder/albumes.html")
+    albumes = Album.objects.all().order_by("titulo")
+    return render(request, "coder/albumes.html", {"albumes": albumes})
+
+def about(request):
+    return render(request, "coder/about.html")
 
 def crear_cliente(request):
     if request.method == "POST":
@@ -30,6 +34,28 @@ def lista_clientes(request):
     else:
         clientes = Cliente.objects.all().order_by("-id")
     return render(request, "coder/cliente_list.html", {"clientes": clientes, "query": query})
+
+def detalle_cliente(request, pk):
+    cliente = get_object_or_404(Cliente, pk=pk)
+    return render(request, "coder/cliente_detail.html", {"cliente": cliente})
+
+def editar_cliente(request, pk):
+    cliente = get_object_or_404(Cliente, pk=pk)
+    if request.method == "POST":
+        form = ClienteForm(request.POST, instance=cliente)
+        if form.is_valid():
+            form.save()
+            return redirect("cliente_list")
+    else:
+        form = ClienteForm(instance=cliente)
+    return render(request, "coder/cliente_form.html", {"form":form})
+
+def eliminar_cliente(request, pk):
+    cliente = get_object_or_404(Cliente, pk=pk)
+    if request.method == "POST":
+        cliente.delete()
+        return redirect("cliente_list")
+    return render(request, "coder/cliente_confirm_delete.html", {"cliente": cliente})
 
 def crear_grupo(request):
     if request.method == "POST":
@@ -50,3 +76,7 @@ def crear_album(request):
     else:
         form = AlbumForm()
     return render(request, "coder/album_form.html", {'form': form})
+
+def detalle_album(request, pk):
+    album = get_object_or_404(Album, pk=pk)
+    return render(request, "coder/album_detail.html", {"album": album})

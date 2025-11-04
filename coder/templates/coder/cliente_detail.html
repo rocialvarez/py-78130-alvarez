@@ -1,0 +1,18 @@
+{% extends "coder/index.html" %}
+{% block titulo %} Detalle de Cliente {% endblock %}
+{% block contenido %}
+<div class="container my-5">
+  <h2 class="text-center mb-4">Detalle de {{ cliente.nombre }} {{ cliente.apellido }}</h2>
+  <ul class="list-group shadow-sm">
+    <li class="list-group-item"><strong>Email:</strong> {{ cliente.email }}</li>
+    <li class="list-group-item"><strong>Teléfono:</strong> {{ cliente.telefono }}</li>
+    <li class="list-group-item"><strong>Dirección:</strong> {{ cliente.direccion }}</li>
+    <li class="list-group-item"><strong>Fecha de nacimiento:</strong> {{ cliente.fecha_de_nacimiento|date:"d/m/Y" }}</li>
+  </ul>
+  <div class="text-center mt-4">
+    <a href="{% url 'cliente_edit' cliente.pk %}" class="btn btn-primary">Editar</a>
+    <a href="{% url 'cliente_delete' cliente.pk %}" class="btn btn-danger">Eliminar</a>
+    <a href="{% url 'cliente_list' %}" class="btn btn-secondary">Volver</a>
+  </div>
+</div>
+{% endblock %}
