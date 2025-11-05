@@ -1,5 +1,5 @@
 # py-78130-alvarez
-Repositorio del proyecto final para el curso de Python Flex, comisión 78130.
+Repositorio del proyecto final para el curso de Python Flex, comisión 78130. Se trata de una aplicación de E-commerce de venta de álbumes donde los usuarios pueden crear sus perfiles para recibir información sobre cualquier nuevo producto que ingresa. 
 
 # Instalación y puesta en marcha
 
